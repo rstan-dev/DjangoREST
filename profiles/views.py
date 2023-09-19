@@ -18,6 +18,7 @@ class ProfileList(APIView):
 
 
 class ProfileDetail(APIView):
+    "adds html form to allow updates"
     serializer_class = ProfileSerializer
 
     def get_object(self, pk):
