@@ -1,10 +1,7 @@
-from django.http import Http404
-from rest_framework import generics, status, permissions
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from rest_framework import generics
+from drf_api.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer
-from drf_api.permissions import IsOwnerOrReadOnly
 
 
 class ProfileList(generics.ListAPIView):
@@ -13,59 +10,13 @@ class ProfileList(generics.ListAPIView):
     No Create view (post method), as profile creation handled by django signals
     """
     serializer_class = ProfileSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Profile.objects.all()
 
 
-class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
+class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
-    Retrieve a profile and edit or delete it if you own it.
+    Retrieve a profile and edit it if you own it.
     """
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.all()
-
-
-
-# class ProfileList(APIView):
-#     """
-#     List all profiles
-#     No Create view (post method), as profile creation handled by django signals
-#     """
-#     def get(self, request):
-#         profiles = Profile.objects.all()
-#         serializer = ProfileSerializer(
-#             profiles, many=True, context={'request': request})
-#         return Response(serializer.data)
-
-
-# class ProfileDetail(APIView):
-#     "adds html form to allow updates"
-#     serializer_class = ProfileSerializer
-
-#     "adds permission"
-#     permission_classes = [IsOwnerOrReadOnly]
-
-#     def get_object(self, pk):
-#         try:
-#             profile = Profile.objects.get(pk=pk)
-#             "ensures user can only edit their own profile"
-#             self.check_object_permissions(self.request, profile)
-#             return profile
-#         except Profile.DoesNotExist:
-#             raise Http404
-
-#     def get(self, request, pk):
-#         profile = self.get_object(pk)
-#         serializer = ProfileSerializer(
-#             profile, context={'request': request})
-#         return Response(serializer.data)
-
-#     def put(self, request, pk):
-#         profile = self.get_object(pk)
-#         serializer = ProfileSerializer(
-#             profile, data=request.data, context={'request': request})
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUST)
