@@ -19,9 +19,9 @@ if os.path.exists('env.py'):
 
 CLOUDINARY_STORAGE = {
 
-    'CLOUD_NAME': env.CLOUD_NAME,
-    'API_KEY': env.API_KEY,
-    'API_SECRET': env.API_SECRET
+    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
+    'API_KEY': os.getenv('API_KEY'),
+    'API_SECRET': os.getenv('API_SECRET')
 }
 
 MEDIA_URL = '/media/'
