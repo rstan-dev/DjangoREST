@@ -69,7 +69,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '8000-rstandev-djangorest-lcug5bvf388.ws-eu104.gitpod.io',
-    'localhost', 'djangorestapi.herokuapp.com'
+    'localhost', 'djangorestapi-a52988e81dd4.herokuapp.com'
 ]
 
 
