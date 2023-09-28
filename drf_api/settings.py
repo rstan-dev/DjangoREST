@@ -70,6 +70,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-rstandev-djangorest-lcug5bvf388.ws-eu104.gitpod.io',
+    '8000-rstandev-djangorest-lcug5bvf388.ws-eu105.gitpod.io',
     'localhost', os.environ.get('ALLOWED_HOST'),
 ]
 
