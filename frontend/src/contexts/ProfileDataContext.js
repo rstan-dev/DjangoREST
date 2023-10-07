@@ -15,7 +15,21 @@ export const ProfileDataProvider = ({ children }) => {
         popularProfiles: { results: [] },
     });
 
-    const currentUser = useCurrentUser()
+    const currentUser = useCurrentUser();
+
+    const handleFollow = async (clickedProfile) => {
+        try {
+            const { data } = await axiosReq.get(
+                "/profiles/?ordering=-folloowers_count"
+            );
+            setProfileData((prevState) => ({
+                ...prevState,
+                populareProfiles: data,
+            }));
+        } catch(err) {
+            console.log(err)
+        }
+    };
 
     useEffect(() => {
         const handleMount = async () => {
@@ -36,7 +50,7 @@ export const ProfileDataProvider = ({ children }) => {
 
     return (
         <ProfileDataContext.Provider value={profileData}>
-            <setProfileDataContext.Provider value={setProfileData}>
+            <setProfileDataContext.Provider value={{setProfileData, handleFollow}}>
                 {children}
             </setProfileDataContext.Provider>
 
