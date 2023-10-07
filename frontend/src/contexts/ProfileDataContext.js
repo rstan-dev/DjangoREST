@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { axiosReq  } from '../api/axiosDefaults';
+import { axiosReq, axiosRes  } from '../api/axiosDefaults';
 import { useCurrentUser } from '../contexts/CurrentUserContext';
 
 export const ProfileDataContext = createContext();
@@ -19,13 +19,10 @@ export const ProfileDataProvider = ({ children }) => {
 
     const handleFollow = async (clickedProfile) => {
         try {
-            const { data } = await axiosReq.get(
-                "/profiles/?ordering=-folloowers_count"
-            );
-            setProfileData((prevState) => ({
-                ...prevState,
-                populareProfiles: data,
-            }));
+            const { data } = await axiosRes.post(
+                '/followers/', {
+                    followed: clickedProfile.id
+                })
         } catch(err) {
             console.log(err)
         }
