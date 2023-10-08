@@ -21,6 +21,7 @@ import { useCurrentUser } from "../contexts/CurrentUserContext";
 import { useSetProfileData } from "../contexts/ProfileDataContext";
 import { useProfileData } from "../contexts/ProfileDataContext";
 import { fetchMoreData } from "../utils/utils";
+import { ProfileEditDropdown } from "../components/MoreDropdown";
 import Post from "../pages/posts/Post";
 
 function ProfilePage(props) {
@@ -59,6 +60,7 @@ function ProfilePage(props) {
 
   const mainProfile = (
     <>
+      {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
       <Row noGutters className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
           <Image
