@@ -10,9 +10,9 @@ import PostEditForm from "./pages/posts/PostEditForm";
 import PostPage from "./pages/posts/PostPage";
 import PostsPage from "./pages/posts/PostsPage";
 import ProfilePage from "./profiles/ProfilePage";
-import UsernameForm from "./pages/profiles/UsernameForm";
-import UserPasswordForm from "./pages/profiles/UserPasswordForm";
-import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import UsernameForm from "./profiles/UsernameForm";
+import UserPasswordForm from "./profiles/UserPasswordForm";
+import ProfileEditForm from "./profiles/ProfileEditForm";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
