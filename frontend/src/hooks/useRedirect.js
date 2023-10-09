@@ -8,7 +8,7 @@ export const useRedirect = (userAuthStatus) => {
     useEffect(() => {
         const handleMount = async () => {
             try {
-                await axios.post('/dj-rest-auth/token/refresh')
+                await axios.post('/dj-rest-auth/token/refresh');
                 // if user is logged in, the code will run
                 if (userAuthStatus === 'loggedIn') {
                     history.push('/')
