@@ -2,5 +2,8 @@
   "dependencies": {
     "react-infinite-scroll-component": "^6.1.0",
     "react-router": "^6.16.0"
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.3.3"
   }
 }
