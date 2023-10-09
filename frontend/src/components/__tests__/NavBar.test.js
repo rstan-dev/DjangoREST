@@ -1,9 +1,12 @@
-import { render } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import { BrowserRouter as Router } from "react-router-dom"
 import NavBar from "../NavBar"
+
 
 test('renders NavBar', () => {
     render(<Router>
         <NavBar />
-    </Router>)
-})
+    </Router>
+    );
+    screen.debug();
+});
